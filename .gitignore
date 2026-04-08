@@ -1,0 +1,27 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+
+# next
+/.next/
+/out/
+
+# env
+.env
+.env.local
+.env.*.local
+
+# debug
+npm-debug.log*
+
+# local multi-user progress fallback (Next.js dev without MongoDB)
+/data/clerk-progress.json
+
+# clerk local
+.clerk/
+
+# OS
+.DS_Store
+Thumbs.db
