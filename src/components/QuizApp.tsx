@@ -124,7 +124,7 @@ export function QuizApp() {
 
   const isValidDatasetId = useCallback((id: unknown) => {
     const n = Number(id);
-    return Number.isInteger(n) && n >= 1 && n <= 20;
+    return Number.isInteger(n) && n >= 1 && n <= 40;
   }, []);
 
   const init = useCallback(async () => {
@@ -208,7 +208,7 @@ export function QuizApp() {
           setMetadataError(
             data?.error
               ? `保存失败：${data.error}`
-              : '保存失败：请检查英文名与数据集编号（1-20），并确保服务端已启动。'
+              : '保存失败：请检查英文名与数据集编号（1-40），并确保服务端已启动。'
           );
         }
         return;
@@ -335,7 +335,7 @@ export function QuizApp() {
           <div className="bg-white border border-gray-200 rounded-2xl p-8 md:p-10 shadow-sm">
             <div className="mb-6">
               <h1 className="text-3xl font-light tracking-wide text-gray-900">信息统计</h1>
-              <p className="text-sm text-gray-500 mt-2">进入第一题前，请先填写问卷回答者信息并选择数据集编号（1-20）。</p>
+              <p className="text-sm text-gray-500 mt-2">进入第一题前，请先填写问卷回答者信息并选择数据集编号（1-40）。</p>
             </div>
             <form
               className="space-y-5"
@@ -374,9 +374,9 @@ export function QuizApp() {
                   defaultValue={isValidDatasetId(datasetId) ? String(datasetId) : ''}
                 >
                   <option value="" disabled>
-                    请选择 1 - 20
+                    请选择 1 - 40
                   </option>
-                  {Array.from({ length: 20 }, (_, i) => i + 1).map((n) => (
+                  {Array.from({ length: 40 }, (_, i) => i + 1).map((n) => (
                     <option key={n} value={String(n)}>
                       {n}
                     </option>
@@ -409,7 +409,7 @@ export function QuizApp() {
             服务端未在仓库根目录找到对应题库 JSON（与 Mongo 无关）。请将数据集文件放到本机/服务器上的项目根目录，文件名需与编号一致，例如：
           </p>
           <code className="mt-4 block rounded-lg bg-white px-3 py-2 text-sm text-gray-800 break-all border border-amber-100">
-            {rel ?? 'readable/step3_partNN_20_readable.json'}
+            {rel ?? 'readable/dataNN.json'}
           </code>
           <p className="mt-4 text-xs text-amber-800/80">
             放置后无需改代码，刷新页面或重新「开始答题」即可加载题目。

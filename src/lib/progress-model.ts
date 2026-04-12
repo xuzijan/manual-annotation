@@ -21,7 +21,7 @@ export function createEmptyProgress(): ProgressState {
 
 export function normalizeDatasetId(datasetId: unknown): number | null {
   const n = Number(datasetId);
-  if (!Number.isInteger(n) || n < 1 || n > 20) return null;
+  if (!Number.isInteger(n) || n < 1 || n > 40) return null;
   return n;
 }
 
@@ -31,7 +31,7 @@ export function getDatasetReadableRelativePath(datasetId: number | null): string
   const n = normalizeDatasetId(datasetId);
   if (n === null) return null;
   const part = String(n).padStart(2, '0');
-  return `readable/step3_part${part}_20_readable.json`;
+  return `readable/data${part}.json`;
 }
 
 function normalizeDatasetsMap(datasets: unknown): ProgressState['datasets'] {

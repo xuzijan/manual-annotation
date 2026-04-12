@@ -17,9 +17,9 @@ function createEmptyProgress() {
 function getDatasetFile(datasetId) {
   if (datasetId === null || datasetId === undefined || datasetId === '') return null;
   const n = Number(datasetId);
-  if (!Number.isInteger(n) || n < 1 || n > 20) return null;
+  if (!Number.isInteger(n) || n < 1 || n > 40) return null;
   const part = String(n).padStart(2, '0');
-  return path.join(__dirname, 'readable', `step3_part${part}_20_readable.json`);
+  return path.join(__dirname, 'readable', `data${part}.json`);
 }
 
 function loadQuestionsForDataset(datasetId) {
@@ -106,7 +106,7 @@ function isValidRespondentNameEn(name) {
 
 function normalizeDatasetId(datasetId) {
   const n = Number(datasetId);
-  if (!Number.isInteger(n) || n < 1 || n > 20) return null;
+  if (!Number.isInteger(n) || n < 1 || n > 40) return null;
   return n;
 }
 

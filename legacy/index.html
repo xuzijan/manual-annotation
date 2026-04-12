@@ -73,7 +73,7 @@
         <div class="bg-white border border-gray-200 rounded-2xl p-8 md:p-10 shadow-sm">
           <div class="mb-6">
             <h1 class="text-3xl font-light tracking-wide text-gray-900">信息统计</h1>
-            <p class="text-sm text-gray-500 mt-2">进入第一题前，请先填写问卷回答者信息并选择数据集编号（1-20）。</p>
+            <p class="text-sm text-gray-500 mt-2">进入第一题前，请先填写问卷回答者信息并选择数据集编号（1-40）。</p>
           </div>
 
           <form class="space-y-5" id="metadata-form">
@@ -86,7 +86,7 @@
             <div>
               <label class="block text-sm font-medium text-gray-700 mb-2" for="dataset-id">选择要做的数据集编号</label>
               <select class="w-full rounded-lg border-gray-200 focus:border-black focus:ring-black" id="dataset-id" name="datasetId" required>
-                <option value="" selected disabled>请选择 1 - 20</option>
+                <option value="" selected disabled>请选择 1 - 40</option>
               </select>
             </div>
 
@@ -277,7 +277,7 @@
         const sel = document.getElementById('dataset-id');
         if (!sel) return;
         if (sel.dataset.populated === '1') return;
-        for (let i = 1; i <= 20; i++) {
+        for (let i = 1; i <= 40; i++) {
           const opt = document.createElement('option');
           opt.value = String(i);
           opt.textContent = String(i);
@@ -294,7 +294,7 @@
 
       isValidDatasetId(id) {
         const n = Number(id);
-        return Number.isInteger(n) && n >= 1 && n <= 20;
+        return Number.isInteger(n) && n >= 1 && n <= 40;
       },
 
       async submitMetadata(respondentNameEn, datasetId) {
@@ -330,7 +330,7 @@
           this.isComplete = this.questions.length > 0 && this.questions.every(q => Array.isArray(this.answers[q.id]) && this.answers[q.id].length > 0);
           this.render();
         } catch (e) {
-          if (err) err.textContent = '保存失败：请检查英文名与数据集编号（1-20），并确保服务端已启动。';
+          if (err) err.textContent = '保存失败：请检查英文名与数据集编号（1-40），并确保服务端已启动。';
         } finally {
           if (btn) btn.disabled = false;
         }

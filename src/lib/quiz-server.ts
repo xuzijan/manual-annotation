@@ -3,9 +3,9 @@ import path from 'path';
 
 export function getDatasetFile(datasetId: number | null, cwd = process.cwd()): string | null {
   if (datasetId === null || datasetId === undefined) return null;
-  if (!Number.isInteger(datasetId) || datasetId < 1 || datasetId > 20) return null;
+  if (!Number.isInteger(datasetId) || datasetId < 1 || datasetId > 40) return null;
   const part = String(datasetId).padStart(2, '0');
-  return path.join(cwd, 'readable', `step3_part${part}_20_readable.json`);
+  return path.join(cwd, 'readable', `data${part}.json`);
 }
 
 export function loadQuestionsForDataset(datasetId: number | null, cwd = process.cwd()) {
